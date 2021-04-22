@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © OXID eSales AG. All rights reserved.
+ * All rights reserved.
  * See LICENSE file for license details.
  */
 
@@ -10,17 +10,17 @@
 $sMetadataVersion = '2.0';
 
 /**
- * Module information
+ * AdminOrder information
  */
 $aModule = [
-    'id'          => 'oe_graphql_admingraf',
-    'title'       => 'GraphQL Admingraf',
-    'description' => 'OXID GraphQL Storefront',
-    'thumbnail'   => 'logo.png',
-    'version'     => '0.0.0',
-    'author'      => 'OXID eSales Community',
-    'url'         => 'https://github.com/hkreuter/oxid-admingraf',
-    'email'       => 'info@oxid-esales.com',
+    'id'          => 'hkreuter_oxid_admingraph',
+    'title'       => 'GraphQL AdminGraph',
+    'description' =>  '',
+    'thumbnail'   => 'out/pictures/logo.png',
+    'version'     => '0.0.1',
+    'author'      => 'Hkreuter',
+    'url'         => '',
+    'email'       => '',
     'extend'      => [
     ],
     'controllers' => [

@@ -1,0 +1,4 @@
+name: AdminGraph migrations
+migrations_namespace: Hkreuter\GraphQL\AdminGraph\Migrations
+table_name: oxmigrations_admingraph
+migrations_directory: data

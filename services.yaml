@@ -1,0 +1,18 @@
+services:
+
+    _defaults:
+        public: false
+        autowire: true
+
+    Hkreuter\GraphQL\AdminGraph\:
+        resource: 'src/*'
+        exclude: 'src/**/{DataType}'
+        public: true
+
+    Hkreuter\GraphQL\AdminGraph\Shared\Service\NamespaceMapper:
+        class: Hkreuter\GraphQL\AdminGraph\Shared\Service\NamespaceMapper
+        tags: ['graphql_namespace_mapper']
+
+    Hkreuter\GraphQL\AdminGraph\Shared\Service\PermissionProvider:
+        class: Hkreuter\GraphQL\AdminGraph\Shared\Service\PermissionProvider
+        tags: ['graphql_permission_provider']
