@@ -28,28 +28,20 @@ final class AdminOrdersRepository
 
     public function getOrdersCount(?DateTimeInterface $dateFrom, ?DateTimeInterface $dateTo): int
     {
-        $parameters = [];
-
         /** @var QueryBuilder $queryBuilder */
         $queryBuilder = $this->queryBuilderFactory->create();
-        $queryBuilder->getConnection()->setFetchMode(PDO::FETCH_ASSOC);
         $queryBuilder->select('count(oxorder.oxid) as counted')
-            ->from('oxorder');
-
-        $method = 'where';
+                     ->from('oxorder');
 
         if ($dateFrom) {
-            $queryBuilder->where('oxorder.OXORDERDATE >= :dateFrom');
-            $parameters[':dateFrom'] = $dateFrom->format('Y-m-d h:i:s');
-            $method                  = 'andWhere';
+            $queryBuilder->andWhere('oxorder.OXORDERDATE >= :dateFrom');
+            $queryBuilder->setParameter(':dateFrom', $dateFrom->format('Y-m-d h:i:s'));
         }
 
         if ($dateTo) {
-            $parameters[':dateTo'] = $dateTo->format('Y-m-d h:i:s');
-            $queryBuilder->$method('oxorder.OXORDERDATE <= :dateTo');
+            $queryBuilder->andWhere('oxorder.OXORDERDATE <= :dateTo');
+            $queryBuilder->setParameter(':dateTo', $dateTo->format('Y-m-d h:i:s'));
         }
-
-        $queryBuilder->setParameters($parameters);
 
         /** @var \Doctrine\DBAL\Statement $result */
         $result = $queryBuilder->execute();
@@ -59,28 +51,21 @@ final class AdminOrdersRepository
 
     public function getOrderIds(?DateTimeInterface $dateFrom, ?DateTimeInterface $dateTo): array
     {
-        $parameters = [];
-
         /** @var QueryBuilder $queryBuilder */
         $queryBuilder = $this->queryBuilderFactory->create();
         $queryBuilder->getConnection()->setFetchMode(PDO::FETCH_ASSOC);
         $queryBuilder->select('oxorder.oxid')
-            ->from('oxorder');
-
-        $method = 'where';
+                     ->from('oxorder');
 
         if ($dateFrom) {
-            $queryBuilder->where('oxorder.OXORDERDATE >= :dateFrom');
-            $parameters[':dateFrom'] = $dateFrom->format('Y-m-d h:i:s');
-            $method                  = 'andWhere';
+            $queryBuilder->andWhere('oxorder.OXORDERDATE >= :dateFrom');
+            $queryBuilder->setParameter(':dateFrom', $dateFrom->format('Y-m-d h:i:s'));
         }
 
         if ($dateTo) {
-            $parameters[':dateTo'] = $dateTo->format('Y-m-d h:i:s');
-            $queryBuilder->$method('oxorder.OXORDERDATE <= :dateTo');
+            $queryBuilder->andWhere('oxorder.OXORDERDATE <= :dateTo');
+            $queryBuilder->setParameter(':dateTo', $dateTo->format('Y-m-d h:i:s'));
         }
-
-        $queryBuilder->setParameters($parameters);
 
         /** @var \Doctrine\DBAL\Statement $result */
         $result = $queryBuilder->execute();
