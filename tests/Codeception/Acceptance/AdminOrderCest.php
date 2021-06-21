@@ -147,8 +147,7 @@ final class AdminOrderCest
             $queryPart  = '(' . $queryPart . ')';
         }
 
-        $query = 'query ' . #$parameters .
-                 '{
+        $query = 'query {
                      adminOrders ' . $queryPart . '{
                         orderCount
                         orders {
