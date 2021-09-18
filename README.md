@@ -4,7 +4,7 @@
 
 ## Usage
 
-This assumes you have the OXID eShop up and running and installed and activated the `oxid-esales/graphql-base` AdminOrder.
+This assumes you have the OXID eShop up and running and installed and activated the `oxid-esales/graphql-base` module.
 
 ### Install
 
